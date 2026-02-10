@@ -57,12 +57,6 @@ export default function ProductListPage() {
 						render: (r) => (
 							<div className="space-y-0.5">
 								<div className="font-medium">{r.name}</div>
-								<Link
-									to={`/products/${r.id}`}
-									className="text-xs text-blue-700 hover:underline"
-								>
-									Open details
-								</Link>
 							</div>
 						),
 					},
