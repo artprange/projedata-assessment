@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import PageWrapper from '../../../components/PageWrapper';
 import Table from '../../../components/Table';
 import Modal from '../../../components/Modal';
