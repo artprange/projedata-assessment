@@ -5,7 +5,7 @@ export type CreateMaterialPayload = Omit<Material, 'id'>;
 export type UpdateMaterialPayload = Omit<Material, 'id'>;
 
 export async function listMaterials() {
-	const res = await api.get<Material[]>('/api/materials');
+	const res = await api.get('/materials');
 	return res.data;
 }
 

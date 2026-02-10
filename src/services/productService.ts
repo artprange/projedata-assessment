@@ -6,7 +6,7 @@ export type CreateProductPayload = Omit<Product, 'id'>;
 export type UpdateProductPayload = Omit<Product, 'id'>;
 
 export async function listProducts() {
-	const res = await api.get<Product[]>('/api/products');
+	const res = await api.get('/products');
 	return res.data;
 }
 
