@@ -3,13 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './app/App';
 import './index.css';
 
-const shouldMock =
-	import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'true';
-
-if (shouldMock) {
-	import('./mocks/browser')
-		.then(({ worker }) => worker.start({ onUnhandledRequest: 'bypass' }))
-		.catch((err) => console.error('[MSW] failed to start', err));
+if (import.meta.env.DEV) {
+	const { worker } = await import('./mocks/browser');
+	await worker.start({ onUnhandledRequest: 'bypass' });
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

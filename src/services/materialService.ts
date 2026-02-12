@@ -5,12 +5,12 @@ export type CreateMaterialPayload = Omit<Material, 'id'>;
 export type UpdateMaterialPayload = Omit<Material, 'id'>;
 
 export async function listMaterials() {
-	const res = await api.get<Material[]>('/materials');
+	const res = await api.get('/materials');
 	return res.data;
 }
 
 export async function createMaterial(payload: CreateMaterialPayload) {
-	const res = await api.post<Material>('/materials', payload);
+	const res = await api.post<Material>('/api/materials', payload);
 	return res.data;
 }
 
@@ -18,10 +18,10 @@ export async function updateMaterial(
 	id: string,
 	payload: UpdateMaterialPayload,
 ) {
-	const res = await api.put<Material>(`/materials/${id}`, payload);
+	const res = await api.put<Material>(`/api/materials/${id}`, payload);
 	return res.data;
 }
 
 export async function deleteMaterial(id: string) {
-	await api.delete(`/materials/${id}`);
+	await api.delete(`/api/materials/${id}`);
 }
