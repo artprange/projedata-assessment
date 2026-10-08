@@ -20,9 +20,9 @@ Built with:
 
 ## Mocked API (MSW)
 
-To speed up delivery, the API is mocked using **MSW (Mock Service Worker)** in development mode.
+The API is mocked using **MSW (Mock Service Worker)** when `VITE_DEMO=true`, in both development and production builds. This explicit flag follows the same approach as `dining-front`.
 
-- All requests are made to `/api/*`
+- In demo mode, all requests are made to `/api/*`
 - MSW intercepts these requests and returns responses using an in-memory store (runtime-only persistence)
 - The endpoints follow the same contract intended for a real backend (e.g. Spring Boot + Postgres)
 
@@ -65,4 +65,16 @@ To speed up delivery, the API is mocked using **MSW (Mock Service Worker)** in d
 
 ```bash
 npm install
+cp .env.example .env
+npm run dev
 ```
+
+The provided environment enables demo mode, so no backend is required. The
+seeded products and materials are stored in memory; reloading resets changes.
+
+To use the real backend, set `VITE_DEMO=false` and configure
+`VITE_API_BASE_URL` with the backend origin (for example,
+`http://localhost:8080`). Requests will use that origin followed by `/api/*`.
+Restart Vite after changing `.env`. For production, rebuild with `npm run build`
+because Vite embeds these variables at build time. Use `npm run preview` to
+check the build locally.
